@@ -141,8 +141,8 @@ bash dev_scripts/dtu_test_inf/inftest_scan114.sh
 ```
 
 ## Per-scene Optimization:
-<img src="https://github.com/Xharlie/xharlie.github.io/raw/master/projects/project_sites/pointnerf/vid/ficus.gif" width="33%" /><img src="https://github.com/Xharlie/xharlie.github.io/raw/master/projects/project_sites/pointnerf/vid/truck.gif" width="33%" />
-<img src="https://github.com/Xharlie/xharlie.github.io/raw/master/projects/project_sites/pointnerf/vid/scene101.gif" width="50%" />
+<img src="https://github.com/Xharlie/xharlie.github.io/raw/master/projects/project_sites/pointnerf/vid/ficus.gif" width="45%" /><img src="https://github.com/Xharlie/xharlie.github.io/raw/master/projects/project_sites/pointnerf/vid/scene101.gif" width="50%" />
+<img src="https://github.com/Xharlie/xharlie.github.io/raw/master/projects/project_sites/pointnerf/vid/truck.gif" width="70%" />
 
 ### Download per-scene optimized Point-NeRFs
  You can skip training and download the folders of ''nerfsynth'', ''tanksntemples'' and ''scannet'' here [google drive](https://drive.google.com/drive/folders/1xk1GhDhgPk1MrlX8ncfBz5hNMvSa9vS6?usp=sharing), and place them in ''checkpoints/''.
