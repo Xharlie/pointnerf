@@ -7,7 +7,7 @@ Primary contact: [Qiangeng Xu](https://xharlie.github.io/)
 
 Point-NeRF uses neural 3D point clouds, with associated neural features, to model a radiance field. Point-NeRF can be rendered efficiently by aggregating neural point features near scene surfaces, in a ray marching-based rendering pipeline. Moreover, Point-NeRF can be initialized via direct inference of a pre-trained deep network to produce a neural point cloud; this point cloud can be finetuned to surpass the visual quality of NeRF with 30X faster training time. Point-NeRF can be combined with other 3D reconstruction methods and handles the errors and outliers in such methods via a novel pruning and growing mechanism.
 
-<img src="./images/<img src="./images/pipeline.png" />
+<img src="./images/pipeline.png" />
 
 ## Reference
 Please cite our paper if you are interested   
@@ -140,10 +140,11 @@ bash dev_scripts/dtu_test_inf/inftest_scan103.sh
 bash dev_scripts/dtu_test_inf/inftest_scan114.sh
 ```
 
-## Per-Scene Optimization:
-![no-finetuned](https://github.com/Xharlie/xharlie.github.io/raw/master/projects/project_sites/pointnerf/vid/ficus.gif)
-![no-finetuned](https://github.com/Xharlie/xharlie.github.io/raw/master/projects/project_sites/pointnerf/vid/scene101.gif)
-![no-finetuned](https://github.com/Xharlie/xharlie.github.io/raw/master/projects/project_sites/pointnerf/vid/truck.gif)
+## Per-scene Optimization:
+<img src="https://github.com/Xharlie/xharlie.github.io/raw/master/projects/project_sites/pointnerf/vid/ficus.gif" width="33%" />
+<img src="https://github.com/Xharlie/xharlie.github.io/raw/master/projects/project_sites/pointnerf/vid/scene101.gif" width="33%" />
+<img src="https://github.com/Xharlie/xharlie.github.io/raw/master/projects/project_sites/pointnerf/vid/truck.gif" width="33%" />
+
 ### Download per-scene optimized Point-NeRFs
  You can skip training and download the folders of ''nerfsynth'', ''tanksntemples'' and ''scannet'' here [google drive](https://drive.google.com/drive/folders/1xk1GhDhgPk1MrlX8ncfBz5hNMvSa9vS6?usp=sharing), and place them in ''checkpoints/''.
 
@@ -247,6 +248,7 @@ The training scripts will start to do initialization if there is no ''.pth'' fil
 
 ## Acknowledgement
 Our repo is developed based on [MVSNet](https://github.com/YoYo000/MVSNet),  [NeRF](https://github.com/bmild/nerf), [MVSNeRF](https://github.com/apchenstu/mvsnerf), and [NSVF](https://github.com/facebookresearch/NSVF)
+
 Please also consider citing the corresponding papers. 
 
 The project is conducted collaboratively between Adobe Research and University of Southern California. 
