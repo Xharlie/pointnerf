@@ -21,29 +21,24 @@ Please cite our paper if you are interested
 }
 ```
 
-
-
-
 ## Installation
 
 ### Requirements
 All the codes are tested in the following environment:
-* Linux (tested on Ubuntu 16.04, should be able to work on 18.04)
+* Linux (tested on Ubuntu 16.04, 18.04, 20.04)
 * Python 3.6+
-* PyTorch 1.1 or higher (tested on PyTorch 1.7, 1.8.1, 1.9, 1.10)
-* CUDA 9.0 or higher (PyTorch 1.3+ needs CUDA 9.2+, tested on CUDA 10.2)
-* [`spconv v1.2.1 (commit fad3000249d27ca918f2655ff73c41f39b0f3127)`](https://github.com/traveller59/spconv/commit/fad3000249d27ca918f2655ff73c41f39b0f3127)
-
+* PyTorch 1.7 or higher (tested on PyTorch 1.7, 1.8.1, 1.9, 1.10)
+* CUDA 10.2 or higher 
 
 ### Install
 Install the dependent libraries as follows:
 
-* Install the dependent python libraries (): 
+* Install the dependent python libraries:
 ```
 pip install torch==1.8.1+cu102 h5py
 pip install imageio scikit-image
 ```
-* Install pycuda following:
+* Install pycuda (crucial) following:
 https://documen.tician.de/pycuda/install.html 
 
 We develope our code with pytorch1.8.1 and pycuda2021.1
@@ -246,7 +241,7 @@ The training scripts will start to do initialization if there is no ''.pth'' fil
 
 
 ## Acknowledgement
-Our repo is developed based on [MVSNet](https://github.com/YoYo000/MVSNet),  [NeRF](https://github.com/bmild/nerf), [MVSNeRF](https://github.com/apchenstu/mvsnerf), and [NSVF](https://github.com/facebookresearch/NSVF)
+Our repo is developed based on [MVSNet](https://github.com/YoYo000/MVSNet),  [NeRF](https://github.com/bmild/nerf), [MVSNeRF](https://github.com/apchenstu/mvsnerf), and [NSVF](https://github.com/facebookresearch/NSVF).
 
 Please also consider citing the corresponding papers. 
 
