@@ -20,6 +20,12 @@ Please cite our paper if you are interested
   year={2022}
 }
 ```
+## Overal Instruction
+1. Please first install the libraries as below and download/prepare the datasets as instructed.
+2. Point Initialization: Download pre-trained MVSNet as below and train the feature extraction from scratch or directly download the pre-trained models. (Obtain 'MVSNet' and 'init' folder in checkpoints folder)
+3.  Per-scene Optimization: Download pre-trained models or optimize from scratch as instructed.
+
+We provide all the [checkpoint files (google drive)](https://drive.google.com/drive/folders/1xk1GhDhgPk1MrlX8ncfBz5hNMvSa9vS6?usp=sharing) and all the test results [images and scores (google drive)](https://drive.google.com/drive/folders/1KAYs7XuBJNMTHVBuOCtpLNv9P8UMoayw?usp=sharing)
 
 ## Installation
 
@@ -64,21 +70,21 @@ pointnerf
     |   │   │   │──scene0241_01
 ```
 
-### DTU:
+## DTU:
 Download the preprocessed [DTU training data](https://drive.google.com/file/d/1eDjh-_bxKKnEuz5h-HXS7EDJn59clx6V/view)
 and [Depth_raw](https://virutalbuy-public.oss-cn-hangzhou.aliyuncs.com/share/cascade-stereo/CasMVSNet/dtu_data/dtu_train_hr/Depths_raw.zip) from original [MVSNet repo](https://github.com/YoYo000/MVSNet)
 and unzip. 
 
 
-### NeRF Synthetic
+## NeRF Synthetic
 Download `nerf_synthetic.zip` from [here](https://drive.google.com/drive/folders/128yBriW1IG_3NJ5Rp7APSTZsJqdJdfc1) under ``data_src/nerf/''
 
 
-### Tanks & Temples
+## Tanks & Temples
 Follow Neural Sparse Voxel Fields and download [Tanks&Temples](https://www.tanksandtemples.org/) | [download (.zip)](https://dl.fbaipublicfiles.com/nsvf/dataset/TanksAndTemple.zip) | 0_\* (training) 1_\* (testing) under:
 ``data_src/nsvf/''
 
-### ScanNet
+## ScanNet
 Download and extract ScanNet by following the instructions provided at http://www.scan-net.org/. The detailed steps including:
 * Go to http://www.scan-net.org and fill & sent the request form.
 * You will get a email that has command instruction and a download-scannet.py file, this file is for python 2, you can use our download-scannet.py in the ``data'' directory for python 3.
