@@ -1,4 +1,4 @@
-# Point-NeRF: Point-based Neural Radiance Fields (Under Rreview)
+# Point-NeRF: Point-based Neural Radiance Fields
 <img src="./images/Adobe-Logos.png" width=120px /><img src="images/USC-Logos.png" width=120px />
 
 [Project Sites](https://xharlie.github.io/projects/project_sites/pointnerf/index.html)
@@ -254,4 +254,6 @@ Please also consider citing the corresponding papers.
 
 The project is conducted collaboratively between Adobe Research and University of Southern California. 
 
-The repo is restricted to academic use only.
+## LICENSE
+The repo is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 2.0, and is restricted to academic use only.
+See [LICENSE](https://github.com/Xharlie/pointnerf/blob/master/LICENSE.md).
