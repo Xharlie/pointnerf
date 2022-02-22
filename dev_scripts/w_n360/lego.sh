@@ -9,8 +9,6 @@ save_point_freq=40
 data_root="${nrDataRoot}/nerf/nerf_synthetic/"
 scan="lego"
 
-num_point=819200
-#cloud_path="${nrDataRoot}/nerf/nerf_synthetic_points/lego.pkl"
 load_points=0
 feat_grad=1
 conf_grad=1
@@ -206,7 +204,6 @@ python3 train_ft.py \
         --far_plane $far_plane \
         --dir_norm $dir_norm \
         --which_tonemap_func $which_tonemap_func \
-        --num_point $num_point \
         --load_points $load_points \
         --resume_dir $resume_dir \
         --resume_iter $resume_iter \
