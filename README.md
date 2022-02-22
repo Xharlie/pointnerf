@@ -46,8 +46,10 @@ pip install imageio scikit-image
 ```
 * Install pycuda (crucial) following:
 https://documen.tician.de/pycuda/install.html 
+* Install torch_scatter following:
+https://github.com/rusty1s/pytorch_scatter
 
-We develope our code with pytorch1.8.1 and pycuda2021.1
+We develope our code with pytorch1.8.1, pycuda2021.1, and torch_scatter 2.0.8
 
 ## Data Preparation
 
