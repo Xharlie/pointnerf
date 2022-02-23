@@ -25,7 +25,7 @@ Please cite our paper if you are interested
 2. Point Initialization: Download pre-trained MVSNet as below and train the feature extraction from scratch or directly download the pre-trained models. (Obtain 'MVSNet' and 'init' folder in checkpoints folder)
 3.  Per-scene Optimization: Download pre-trained models or optimize from scratch as instructed.
 
-We provide all the checkpoint_files [google drive](https://drive.google.com/drive/folders/1xk1GhDhgPk1MrlX8ncfBz5hNMvSa9vS6?usp=sharing) / [baidu wangpan](https://pan.baidu.com/s/1doJHI03Tgl_qIquGZuW5bw?pwd=p8bs) and all the test results (images and scores)[google drive](https://drive.google.com/drive/folders/1KAYs7XuBJNMTHVBuOCtpLNv9P8UMoayw?usp=sharing) / [baidu wangpan](https://pan.baidu.com/s/1fojgpuSAbvtWwfcinf4w8A?pwd=ysnm)
+We provide all the checkpoint_files [google drive](https://drive.google.com/drive/folders/1xk1GhDhgPk1MrlX8ncfBz5hNMvSa9vS6?usp=sharing) / [baidu wangpan](https://pan.baidu.com/s/1doJHI03Tgl_qIquGZuW5bw?pwd=p8bs); all the test results (images and scores)[google drive](https://drive.google.com/drive/folders/1KAYs7XuBJNMTHVBuOCtpLNv9P8UMoayw?usp=sharing) / [baidu wangpan](https://pan.baidu.com/s/1fojgpuSAbvtWwfcinf4w8A?pwd=ysnm); and video results [google drive](https://drive.google.com/drive/folders/1dutZEZO9vfeIbfWwplbIIam7YBeyZ0dY?usp=sharing)
 
 ## Installation
 
