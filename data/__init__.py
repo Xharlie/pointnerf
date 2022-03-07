@@ -5,6 +5,7 @@ sys.path.append("../")
 from utils.ncg_string import underscore2camelcase
 from .base_dataset import BaseDataset
 import numpy as np
+import time
 
 def find_dataset_class_by_name(name):
     '''
@@ -50,7 +51,7 @@ def create_data_loader(opt, dataset=None):
 
 def worker_init_fn(worker_id):
     # np.random.seed(np.random.get_state()[1][0] + worker_id)
-    np.random.seed((worker_id + torch.initial_seed()) % np.iinfo(np.int32).max)
+    np.random.seed((worker_id + torch.initial_seed() + np.floor(time.time()).astype(np.int64)) % np.iinfo(np.int32).max)
 
 
 class DefaultDataLoader:

@@ -168,7 +168,7 @@ def reproject_with_depth_gpu(depth_ref, intrinsics_ref, extrinsics_ref, depth_sr
     xyz_src = torch.matmul(torch.matmul(extrinsics_src, torch.linalg.inv(extrinsics_ref)),
                            torch.cat([xyz_ref, torch.ones_like(x_ref)[None,:]], dim=0))[:3]
     # source view x, y
-    K_xyz_src = torch.matmul(intrinsics_src, xyz_src)
+    K_xyz_src = torch.matmul(intrinsics_src, xyz_src) # 3, 6400000
     xy_src = K_xyz_src[:2] / K_xyz_src[2:3]
 
     ## step2. reproject the source view points with source view depth estimation
