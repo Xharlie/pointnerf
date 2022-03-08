@@ -56,7 +56,7 @@ We develope our code with pytorch1.8.1, pycuda2021.1, and torch_scatter 2.0.8
 
 ## Data Preparation
 
-The layout should looks like this, we provide all data folder here: [google_drive](https://drive.google.com/drive/folders/1kqbbdbbN1bQnwYglRe4iV8dKnyCvoOFS?usp=sharing) | [baidu wangpan](https://pan.baidu.com/s/1WxYskO_NhlcxACtN7tpDfw?pwd=pr2v)
+The layout should looks like this, we provide all data folder here: [google_drive](https://drive.google.com/drive/folders/1kqbbdbbN1bQnwYglRe4iV8dKnyCvoOFS?usp=sharing)
 ```
 pointnerf
 ├── data_src
