@@ -230,7 +230,7 @@ The training scripts will start to do initialization if there is no ''.pth'' fil
 </details>
 
 #### NeRF Synthetics using COLMAP points
-(If there is {maximum_step}.pth checkpoint files in the path, these scripts will run test)
+Please download the COLMAP data (see above). If there is {maximum_step}.pth checkpoint files in the path, the scripts below will also run test.
 <details>
   <summary>train scripts</summary>
 
