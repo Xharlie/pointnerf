@@ -131,7 +131,7 @@ def render_vid(model, dataset, visualizer, opt, bg_info, steps=0, gen_vid=True):
 
 
 
-def test(model, dataset, visualizer, opt, bg_info, test_steps=0, gen_vid=False, lpips=True):
+def test(model, dataset, visualizer, opt, bg_info, test_steps=0, gen_vid=True, lpips=True):
     print('-----------------------------------Testing-----------------------------------')
     model.eval()
     total_num = dataset.total
