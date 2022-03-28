@@ -1,4 +1,4 @@
-# Point-NeRF: Point-based Neural Radiance Fields (CVPR 2022)
+# Point-NeRF: Point-based Neural Radiance Fields (CVPR 2022 Oral 🤩)
 <img src="./images/Adobe-Logos.png" width=120px /><img src="images/USC-Logos.png" width=120px />
 
 [Project Sites](https://xharlie.github.io/projects/project_sites/pointnerf/index.html)
