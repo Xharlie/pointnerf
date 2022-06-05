@@ -9,7 +9,7 @@ Point-NeRF uses neural 3D point clouds, with associated neural features, to mode
 
 <img src="./images/pipeline.png" />
 
-[[CVPR 2022 Oral Presentation]](https://youtu.be/zmR9j-4AebA)
+[[CVPR 2022 Oral Presentation](https://i9.ytimg.com/vi/zmR9j-4AebA/mq2.jpg?sqp=CNjJ8ZQG&rs=AOn4CLDLgnjhF3dwrS_qwyG8-a4KP4t-fg)](https://youtu.be/zmR9j-4AebA)
 
 ## Reference
 Please cite our paper if you are interested   
