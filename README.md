@@ -9,6 +9,9 @@ Point-NeRF uses neural 3D point clouds, with associated neural features, to mode
 
 <img src="./images/pipeline.png" />
 
+[![CVPR 2022 Oral Presentation](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)]([https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE](https://youtu.be/zmR9j-4AebA))
+
+
 ## Reference
 Please cite our paper if you are interested   
  <strong>Point-NeRF: Point-based Neural Radiance Fields</strong>.  &nbsp;&nbsp;&nbsp; 
