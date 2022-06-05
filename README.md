@@ -7,9 +7,9 @@ Primary contact: [Qiangeng Xu](https://xharlie.github.io/)
 
 Point-NeRF uses neural 3D point clouds, with associated neural features, to model a radiance field. Point-NeRF can be rendered efficiently by aggregating neural point features near scene surfaces, in a ray marching-based rendering pipeline. Moreover, Point-NeRF can be initialized via direct inference of a pre-trained deep network to produce a neural point cloud; this point cloud can be finetuned to surpass the visual quality of NeRF with 30X faster training time. Point-NeRF can be combined with other 3D reconstruction methods and handles the errors and outliers in such methods via a novel pruning and growing mechanism.
 
-<img src="./images/pipeline.png" />
+<!-- <img src="./images/pipeline.png" /> -->
 
-[[CVPR 2022 Oral Presentation](https://i9.ytimg.com/vi/zmR9j-4AebA/mq2.jpg?sqp=CNjJ8ZQG&rs=AOn4CLDLgnjhF3dwrS_qwyG8-a4KP4t-fg)](https://youtu.be/zmR9j-4AebA)
+[![CVPR 2022 Oral Presentation](https://github.com/Xharlie/pointnerf/blob/master/images/youtube.png)](https://youtu.be/zmR9j-4AebA)
 
 ## Reference
 Please cite our paper if you are interested   
