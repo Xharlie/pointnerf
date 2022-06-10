@@ -8,9 +8,10 @@ import torch
 class BaseOptions:
     def initialize(self, parser: argparse.ArgumentParser):
         #================================ global ================================#
-        parser.add_argument('--name',
+        parser.add_argument('--experiment',
                             type=str,
                             required=True,
+                            dest='name',
                             help='name of the experiment')
         parser.add_argument(
             '--verbose',

@@ -162,7 +162,7 @@ for i in $(seq 1 $prob_freq $maximum_step)
 
 do
 python3 train_ft.py \
-        --name $name \
+        --experiment $name \
         --scan $scan \
         --data_root $data_root \
         --dataset_name $dataset_name \

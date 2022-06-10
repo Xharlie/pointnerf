@@ -127,7 +127,7 @@ split="train"
 
 cd run
 python3 train.py \
-        --name $name \
+        --experiment $name \
         --data_root $data_root \
         --dataset_name $dataset_name \
         --model $model \

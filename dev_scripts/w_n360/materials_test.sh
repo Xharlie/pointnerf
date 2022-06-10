@@ -101,7 +101,7 @@ split="train"
 cd run
 
 python3 test_ft.py \
-        --name $name \
+        --experiment $name \
         --scan $scan \
         --data_root $data_root \
         --dataset_name $dataset_name \
