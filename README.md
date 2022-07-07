@@ -15,10 +15,11 @@ Point-NeRF uses neural 3D point clouds, with associated neural features, to mode
 Please cite our paper if you are interested   
  <strong>Point-NeRF: Point-based Neural Radiance Fields</strong>.  &nbsp;&nbsp;&nbsp; 
 ```
-@article{xu2022point,
-  title={Point-NeRF: Point-based Neural Radiance Fields},
+@inproceedings{xu2022point,
+  title={Point-nerf: Point-based neural radiance fields},
   author={Xu, Qiangeng and Xu, Zexiang and Philip, Julien and Bi, Sai and Shu, Zhixin and Sunkavalli, Kalyan and Neumann, Ulrich},
-  journal={arXiv preprint arXiv:2201.08845},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={5438--5448},
   year={2022}
 }
 ```
