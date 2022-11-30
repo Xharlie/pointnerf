@@ -759,7 +759,7 @@ def main():
             epoch_count = 1
             total_steps = 0
             del points_xyz_all, points_embedding_all, points_color_all, points_dir_all, points_conf_all
-
+    opt.resume_dir = os.path.join(opt.checkpoints_dir, opt.name)
     model.setup(opt, train_len=len(train_dataset))
     model.train()
     data_loader = create_data_loader(opt, dataset=train_dataset)
@@ -869,7 +869,6 @@ def main():
                         # else:
                         if len(add_xyz) > 0:
                             print("len(add_xyz)", len(add_xyz))
-                            model.clean_optimizer_scheduler()
                             model.grow_points(add_xyz, add_embedding, add_color, add_dir, add_conf)
                             length_added = len(add_xyz)
                             del add_xyz, add_embedding, add_color, add_dir, add_conf
@@ -886,31 +885,31 @@ def main():
                             model.save_networks(total_steps, other_states, back_gpu=False)
                             visualizer.print_details(
                                 "$$$$$$$$$$$$$$$$$$$$$$$$$$           add grow new points num: {}, all num: {}           $$$$$$$$$$$$$$$$".format(length_added, len(model.neural_points.xyz)))
-                            # model.reset_optimizer(opt)
-                            # model.reset_scheduler(total_steps, opt)
+
+                            torch.cuda.synchronize()
+                            torch.cuda.empty_cache()
+
+                            # # hard reset
                             # model.cleanup()
                             # pprint(vars(model))
-                            # del model
-                            # visualizer.reset()
-                            # gc.collect()
-                            # torch.cuda.synchronize()
-                            # torch.cuda.empty_cache()
-                            # input("Press Enter to continue...")
-                            # opt.is_train = 1
-                            # opt.no_loss = 0
-                            # model = create_model(opt)
-                            #
-                            # model.setup(opt, train_len=len(train_dataset))
-                            # model.train()
-                            #
-                            # if total_steps > 0:
-                            #     for scheduler in model.schedulers:
-                            #         for i in range(total_steps):
-                            #             scheduler.step()
+                            del model
+                            visualizer.reset()
+                            gc.collect()
+                            opt.is_train = 1
+                            opt.no_loss = 0
+                            opt.resume_iter = total_steps
+                            model = create_model(opt)
+                            model.setup(opt, train_len=len(train_dataset))
+                            model.train()
+                            if total_steps > 0:
+                                for scheduler in model.schedulers:
+                                    for i in range(total_steps):
+                                        scheduler.step()
+                        else:
+                            print("$$$$$$$$$$$$$$$$$$$$$$$$$$           no qualified points to grow           $$$$$$$$$$$$$$$$")
+                            # exit()
 
-                            exit()
-
-                        visualizer.print_details("$$$$$$$$$$$$$$$$$$$$$$$$$$         add grow new points num: {}, all num: {} $$$$$$$$$$$$$$$$".format(len(add_xyz), len(model.neural_points.xyz)))
+                        # visualizer.print_details("$$$$$$$$$$$$$$$$$$$$$$$$$$         add grow new points num: {}, all num: {} $$$$$$$$$$$$$$$$".format(len(add_xyz), len(model.neural_points.xyz)))
                         train_dataset.opt.random_sample = "random"
                     model.train()
                     model.opt.no_loss = 0

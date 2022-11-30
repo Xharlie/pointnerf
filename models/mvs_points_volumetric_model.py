@@ -188,7 +188,7 @@ class MvsPointsVolumetricModel(NeuralPointsVolumetricModel):
 
 
     def reset_optimizer(self, opt):
-        self.clean_optimizer(opt)
+        self.clean_optimizer()
         self.setup_optimizer(opt)
 
     def clean_optimizer(self):

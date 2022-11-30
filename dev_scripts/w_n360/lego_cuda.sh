@@ -1,7 +1,7 @@
 #!/bin/bash
 nrCheckpoint="../checkpoints"
 nrDataRoot="../data_src"
-name='lego'
+name='lego_cuda'
 
 resume_iter=best #
 save_point_freq=40
@@ -53,7 +53,7 @@ vscale=" 2 2 2 "
 kernel_size=" 3 3 3 "
 query_size=" 3 3 3 "
 vsize=" 0.004 0.004 0.004 " #" 0.005 0.005 0.005 "
-wcoord_query=1
+wcoord_query=-1
 z_depth_dim=400
 max_o=830000 #2000000
 ranges=" -0.638 -1.141 -0.346 0.634 1.149 1.141 "
@@ -156,15 +156,17 @@ test_color_loss_items='coarse_raycolor ray_miss_coarse_raycolor ray_masked_coars
 vid=250000
 
 bg_color="white" #"0.0,0.0,0.0,1.0,1.0,1.0"
+bg_filtering=1
+
 split="train"
 
 cd run
 
-for i in $(seq 1 $prob_freq $maximum_step)
-
-do
+#for i in $(seq 1 $prob_freq $maximum_step)
+#
+#do
 #python3 gen_pnts.py \
-python3 train_ft.py \
+python train_ft_nonstop.py \
         --experiment $name \
         --scan $scan \
         --data_root $data_root \
@@ -286,6 +288,5 @@ python3 train_ft.py \
         --zero_one_loss_weights $zero_one_loss_weights \
         --prune_max_iter $prune_max_iter \
         --far_thresh $far_thresh \
-        --debug
-
-done
+        --bg_filtering $bg_filtering
+#done

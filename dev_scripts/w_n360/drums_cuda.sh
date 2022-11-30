@@ -1,13 +1,13 @@
 #!/bin/bash
 nrCheckpoint="../checkpoints"
 nrDataRoot="../data_src"
-name='lego'
+name='drums_cuda'
 
 resume_iter=best #
 save_point_freq=40
 
 data_root="${nrDataRoot}/nerf/nerf_synthetic/"
-scan="lego"
+scan="drums"
 
 load_points=0
 feat_grad=1
@@ -17,8 +17,8 @@ color_grad=1
 vox_res=320
 normview=0
 prune_thresh=0.1
-prune_iter=10001
-prune_max_iter=130000
+prune_iter=-10001
+prune_max_iter=-130000
 
 feedforward=0
 ref_vid=0
@@ -53,14 +53,15 @@ vscale=" 2 2 2 "
 kernel_size=" 3 3 3 "
 query_size=" 3 3 3 "
 vsize=" 0.004 0.004 0.004 " #" 0.005 0.005 0.005 "
-wcoord_query=1
+wcoord_query=-1
 z_depth_dim=400
-max_o=830000 #2000000
-ranges=" -0.638 -1.141 -0.346 0.634 1.149 1.141 "
+max_o=400000 #2000000
+ranges=" -1.126 -0.746 -0.492 1.122 0.962 0.939 "
 SR=80
 K=8
-P=9 #120
+P=10 #120
 NN=2
+
 
 act_type="LeakyReLU"
 
@@ -96,7 +97,7 @@ which_ray_generation='near_far_linear' #'nerf_near_far_linear' #
 domain_size='1'
 dir_norm=0
 
-which_tonemap_func="off" #"gamma" #
+which_tonemap_func="off"
 which_render_func='radiance'
 which_blend_func='alpha'
 out_channels=4
@@ -115,10 +116,10 @@ lr_policy="iter_exponential_decay"
 lr_decay_iters=1000000
 lr_decay_exp=0.1
 
-gpu_ids='0'
-
+gpu_ids='1'
 checkpoints_dir="${nrCheckpoint}/nerfsynth/"
 resume_dir="${nrCheckpoint}/init/dtu_dgt_d012_img0123_conf_agg2_32_dirclr20"
+#resume_dir="${checkpoints_dir}/${name}"
 
 save_iter_freq=10000
 save_point_freq=10000 #301840 #1
@@ -127,6 +128,7 @@ maximum_step=200000 #300000 #800000
 niter=10000 #1000000
 niter_decay=10000 #250000
 n_threads=1
+
 train_and_test=0 #1
 test_num=10
 test_freq=10000 #1200 #1200 #30184 #30184 #50000
@@ -144,7 +146,6 @@ prob_tiers=" 100000 "
 zero_epsilon=1e-3
 
 visual_items=' coarse_raycolor gt_image '
-#visual_items_additional=('coarse_mask' 'fine_mask') # show additional rendered items, here adding rendered masks
 zero_one_loss_items='conf_coefficient' #regularize background to be either 0 or 1
 zero_one_loss_weights=" 0.0001 "
 sparse_loss_weight=0
@@ -156,15 +157,17 @@ test_color_loss_items='coarse_raycolor ray_miss_coarse_raycolor ray_masked_coars
 vid=250000
 
 bg_color="white" #"0.0,0.0,0.0,1.0,1.0,1.0"
+bg_filtering=1
+
 split="train"
 
 cd run
 
-for i in $(seq 1 $prob_freq $maximum_step)
+#for i in $(seq 1 $prob_freq $maximum_step)
+#
+#do
 
-do
-#python3 gen_pnts.py \
-python3 train_ft.py \
+python3 train_ft_nonstop.py \
         --experiment $name \
         --scan $scan \
         --data_root $data_root \
@@ -286,6 +289,6 @@ python3 train_ft.py \
         --zero_one_loss_weights $zero_one_loss_weights \
         --prune_max_iter $prune_max_iter \
         --far_thresh $far_thresh \
-        --debug
+        --bg_filtering $bg_filtering
 
-done
+#done

@@ -643,7 +643,8 @@ class lighting_fast_querier():
         # save_points(raypos_masked.reshape(-1, 3), "./", "raypos_pnts")
 
         ray_mask_tensor = torch.max(raypos_mask_tensor, dim=-1)[0] > 0 # B, R
-        R = torch.max(torch.sum(ray_mask_tensor.to(torch.int32))).cpu().numpy()
+        R = torch.sum(ray_mask_tensor.to(torch.int32)).cpu().numpy()
+        # print("R", torch.sum(ray_mask_tensor.to(torch.int32)), R)
         sample_loc_tensor = torch.zeros([B, R, SR, 3], dtype=torch.float32, device=device)
         sample_pidx_tensor = torch.full([B, R, SR, K], -1, dtype=torch.int32, device=device)
         if R > 0:

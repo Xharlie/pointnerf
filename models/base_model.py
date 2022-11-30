@@ -103,9 +103,10 @@ class BaseModel:
 
     def load_networks(self, epoch):
         for name, net in zip(self.model_names, self.get_networks()):
-            print('loading', name)
+            print('loading pth')
             assert isinstance(name, str)
             load_filename = '{}_net_{}.pth'.format(epoch, name)
+            print("loading epoch, name", epoch, name)
             load_path = os.path.join(self.opt.resume_dir, load_filename)
 
             if not os.path.isfile(load_path):

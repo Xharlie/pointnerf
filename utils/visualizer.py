@@ -5,7 +5,6 @@ from PIL import Image
 import shutil
 from collections import OrderedDict
 import time
-from tensorboardX import SummaryWriter
 import datetime
 import torch
 import imageio
@@ -45,7 +44,8 @@ class Visualizer:
         self.vid_dir = os.path.join(opt.checkpoints_dir, opt.name, 'vids')
         os.makedirs(self.vid_dir, exist_ok=True)
 
-        if opt.show_tensorboard:
+        if opt.show_tensorboard > 0:
+            from tensorboardX import SummaryWriter
             self.tb_writer = SummaryWriter(
                 os.path.join(
                     opt.checkpoints_dir, opt.name,
@@ -174,7 +174,7 @@ class Visualizer:
         print(str)
 
     def plot_current_losses_with_tb(self, step, losses):
-        if not self.opt.show_tensorboard:
+        if not self.opt.show_tensorboard > 0:
             return
 
         for key in losses.keys():

@@ -23,6 +23,23 @@ Please cite our paper if you are interested
   year={2022}
 }
 ```
+
+## Updates ##
+1. To replace pycuda, we have implemented the pytorch cuda functions when using world coordinates to grouping neural points. Simply set wcoord_query=-1
+in your configuration file if the original setting is wcoord_query=1 (see dev_scripts/w_n360/chair_cuda.sh).
+2. We have received constructive feedbacks that when Point-NeRF use MVSNet to reconstruct point cloud, the point fusion after depth estimation by MVSNet will use the alpha channel information in the NeRF-Synthetic Dataset. It is due to the fact MVSNet cannot handle background very well. To improve the fairness, we  include new training scripts and results of PointNeRF + MVSNet when use background color for filtering.  The results are similar to the ones previously reported.
+
+| | Chair |	Drums	| Lego	| Mic	| Materials	| Ship	| Hotdog	| Ficus | Avg |
+| ---- | ---- | ---- | --- | ---- | ---- | ---- | ------- | ------- |------- |
+| PSNR | 35.60 | 26.04	| 35.27	| 35.91	| 29.65	| 30.61 |	37.34 | 35.61	| 33.25 |
+| SSIM  | 0.991	| 0.954	| 0.989	| 0.994	| 0.971	| 0.938	| 0.991	| 0.992	| 0.978 |
+| LPIPSAlex | 0.010	| 0.055	| 0.010	| 0.007	| 0.041	| 0.076	| 0.016	| 0.011	| 0.028 |
+| LPIPSVgg | 0.023	| 0.078	| 0.021	| 0.014	| 0.071	| 0.129 | 0.036	| 0.025 | 0.050 |
+
+This issue is only limited to MVSNet and NeRF-Synthetic Dataset. The Colmap results and other datasets are not impacted.    
+An even more reasonable reconstruction approach should exclude using the knowledge of background color or other point filtering. Therefore, we suggest users to combine PointNeRF with more powerful MVS models, such as [TransMVS](https://github.com/megvii-research/TransMVSNet).
+
+
 ## Overal Instruction
 1. Please first install the libraries as below and download/prepare the datasets as instructed.
 2. Point Initialization: Download pre-trained MVSNet as below and train the feature extraction from scratch or directly download the pre-trained models. (Obtain 'MVSNet' and 'init' folder in checkpoints folder)
@@ -216,7 +233,7 @@ In each scene, we provide initialized point features and network weights ''0_net
 Make sure the ''checkpoints'' folder has ''init'' and ''MVSNet''.
 The training scripts will start to do initialization if there is no ''.pth'' files in a scene folder. It will start from the last ''.pth'' files until reach the iteration of ''maximum_step''.
 
-#### NeRF Synthetics
+#### NeRF Synthetics using MVSNet (w/ alpha channel filtering during point cloud reconstruction and pycuda)
 <details>
   <summary>train scripts</summary>
 
@@ -229,6 +246,23 @@ The training scripts will start to do initialization if there is no ''.pth'' fil
     bash dev_scripts/w_n360/materials.sh
     bash dev_scripts/w_n360/mic.sh
     bash dev_scripts/w_n360/ship.sh
+```
+</details>
+
+
+#### NeRF Synthetics using MVSNet (w/ background color filtering during point cloud reconstruction and pytorch cuda)
+<details>
+  <summary>train scripts</summary>
+
+```
+    bash dev_scripts/w_n360/chair_cuda.sh
+    bash dev_scripts/w_n360/drums_cuda.sh
+    bash dev_scripts/w_n360/ficus_cuda.sh
+    bash dev_scripts/w_n360/hotdog_cuda.sh
+    bash dev_scripts/w_n360/lego_cuda.sh
+    bash dev_scripts/w_n360/materials_cuda.sh
+    bash dev_scripts/w_n360/mic_cuda.sh
+    bash dev_scripts/w_n360/ship_cuda.sh
 ```
 </details>
 

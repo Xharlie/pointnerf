@@ -364,7 +364,8 @@ class MvsPointsModel(nn.Module):
             # print("after filterd", cam_xyz_lst[0].shape)
             photometric_confidence_lst = [torch.ones_like(cam_xyz[...,0]) for cam_xyz in cam_xyz_lst]
 
-        img_feats = self.get_image_features(batch['images'])
+        # img_feats = self.get_image_features(batch['images'])
+        img_feats = self.get_image_features(batch['mvs_images'])
 
         points_features_lst = [self.query_embedding(HDWD, torch.as_tensor(cam_xyz_lst[i][None, ...], device="cuda", dtype=torch.float32), photometric_confidence_lst[i][None, ..., None], img_feats, data_mvs['c2ws'], data_mvs['w2cs'], batch["intrinsics"], int(self.args.depth_vid[i]), pointdir_w=False) for i in range(len(cam_xyz_lst))]
 

@@ -14,8 +14,6 @@ from plyfile import PlyData, PlyElement
 
 from torch.utils.data import Dataset, DataLoader
 import torch
-import os
-from PIL import Image
 import h5py
 
 from data.base_dataset import BaseDataset
@@ -219,6 +217,14 @@ class NerfSynth360FtDataset(BaseDataset):
         )
 
         parser.add_argument(
+            '--bg_filtering',
+            type=int,
+            default=0,
+            help=
+            '0 for alpha channel filtering, 1 for background color filtering'
+        )
+
+        parser.add_argument(
             '--scan',
             type=str,
             default="scan1",
@@ -410,8 +416,8 @@ class NerfSynth360FtDataset(BaseDataset):
         self.image_paths = []
         self.poses = []
         self.all_rays = []
-        self.blackimgs = []
-        self.whiteimgs = []
+        self.mvsimgs = []
+        self.render_gtimgs = []
         self.depths = []
         self.alphas = []
 
@@ -425,13 +431,18 @@ class NerfSynth360FtDataset(BaseDataset):
             image_path = os.path.join(self.data_dir, self.scan, f"{frame['file_path']}.png")
             self.image_paths += [image_path]
             img = Image.open(image_path)
-            img = img.resize(self.img_wh, Image.LANCZOS)
+            img = img.resize(self.img_wh, Image.Resampling.LANCZOS)
             img = self.transform(img)  # (4, h, w)
             self.depths += [(img[-1:, ...] > 0.1).numpy().astype(np.float32)]
-            self.alphas += [img[-1:].numpy().astype(np.float32)]
-            self.blackimgs += [img[:3] * img[-1:]]
-            self.whiteimgs += [img[:3] * img[-1:] + (1 - img[-1:])]
 
+            self.mvsimgs += [img[:3] * img[-1:]]
+            self.render_gtimgs += [img[:3] * img[-1:] + (1 - img[-1:])]
+
+            if self.opt.bg_filtering:
+                self.alphas += [
+                    (torch.norm(self.mvsimgs[-1][:3], dim=0, keepdim=True) > 1e-6).numpy().astype(np.float32)]
+            else:
+                self.alphas += [img[-1:].numpy().astype(np.float32)]
 
             # ray directions for all pixels, same for all images (same H, W, focal)
 
@@ -477,10 +488,10 @@ class NerfSynth360FtDataset(BaseDataset):
         proj_mats, intrinsics, w2cs, c2ws, near_fars = [], [], [], [], []  # record proj mats between views
         for i in view_ids:
             vid = self.view_id_dict[i]
-            # mvs_images += [self.normalize_rgb(self.blackimgs[vid])]
-            # mvs_images += [self.whiteimgs[vid]]
-            mvs_images += [self.blackimgs[vid]]
-            imgs += [self.whiteimgs[vid]]
+            # mvs_images += [self.normalize_rgb(self.mvsimgs[vid])]
+            # mvs_images += [self.render_gtimgs[vid]]
+            mvs_images += [self.mvsimgs[vid]]
+            imgs += [self.render_gtimgs[vid]]
             proj_mat_ls, near_far = self.proj_mats[vid]
             intrinsics.append(self.intrinsics[vid])
             w2cs.append(self.world2cams[vid])
@@ -545,7 +556,7 @@ class NerfSynth360FtDataset(BaseDataset):
 
     def __getitem__(self, id, crop=False, full_img=False):
         item = {}
-        img = self.whiteimgs[id]
+        img = self.render_gtimgs[id]
         w2c = self.world2cams[id]
         c2w = self.cam2worlds[id]
         intrinsic = self.intrinsics[id]
