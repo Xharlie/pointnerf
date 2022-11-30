@@ -33,8 +33,8 @@ in your configuration file if the original setting is wcoord_query=1 (see dev_sc
 | ---- | ---- | ---- | --- | ---- | ---- | ---- | ------- | ------- |------- |
 | PSNR | 35.60 | 26.04	| 35.27	| 35.91	| 29.65	| 30.61 |	37.34 | 35.61	| 33.25 |
 | SSIM  | 0.991	| 0.954	| 0.989	| 0.994	| 0.971	| 0.938	| 0.991	| 0.992	| 0.978 |
-| LPIPSAlex | 0.010	| 0.055	| 0.010	| 0.007	| 0.041	| 0.076	| 0.016	| 0.011	| 0.028 |
 | LPIPSVgg | 0.023	| 0.078	| 0.021	| 0.014	| 0.071	| 0.129 | 0.036	| 0.025 | 0.050 |
+| LPIPSAlex | 0.010	| 0.055	| 0.010	| 0.007	| 0.041	| 0.076	| 0.016	| 0.011	| 0.028 |
 
 This issue only affacts situations when Point-NeRF uses MVSNet on NeRF-Synthetic Dataset. The Colmap results and results on other datasets are not impacted.    
 An even more reasonable reconstruction approach should exclude using the knowledge of background color or other point filtering. Therefore, we suggest users to combine PointNeRF with more powerful MVS models, such as [TransMVS](https://github.com/megvii-research/TransMVSNet).
