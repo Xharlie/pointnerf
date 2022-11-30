@@ -25,9 +25,9 @@ Please cite our paper if you are interested
 ```
 
 ## Updates ##
-1. To replace pycuda, we have implemented the pytorch cuda functions when using world coordinates to grouping neural points. Simply set wcoord_query=-1
+1. To replace pycuda, we have implemented the pytorch cuda functions when using world coordinates to group neural points. Simply set wcoord_query=-1
 in your configuration file if the original setting is wcoord_query=1 (see dev_scripts/w_n360/chair_cuda.sh).
-2. We have received constructive feedbacks that when Point-NeRF use MVSNet to reconstruct point cloud, the point fusion after depth estimation by MVSNet will use the alpha channel information in the NeRF-Synthetic Dataset. It is due to the fact MVSNet cannot handle background very well. To improve the fairness, we  include new training scripts and results of PointNeRF + MVSNet when use background color for filtering.  The results are similar to the ones previously reported.
+2. We have received constructive feedbacks that when Point-NeRF use MVSNet to reconstruct point cloud, the point fusion after depth estimation by MVSNet will use the alpha channel information in the NeRF-Synthetic Dataset. It is due to the fact that MVSNet cannot handle background very well. To improve the fairness, we include new training scripts and results of PointNeRF + MVSNet when using background color for filtering.  The results (see below) are similar to the ones that are previously reported.
 
 | | Chair |	Drums	| Lego	| Mic	| Materials	| Ship	| Hotdog	| Ficus | Avg |
 | ---- | ---- | ---- | --- | ---- | ---- | ---- | ------- | ------- |------- |
@@ -36,7 +36,7 @@ in your configuration file if the original setting is wcoord_query=1 (see dev_sc
 | LPIPSAlex | 0.010	| 0.055	| 0.010	| 0.007	| 0.041	| 0.076	| 0.016	| 0.011	| 0.028 |
 | LPIPSVgg | 0.023	| 0.078	| 0.021	| 0.014	| 0.071	| 0.129 | 0.036	| 0.025 | 0.050 |
 
-This issue is only limited to MVSNet and NeRF-Synthetic Dataset. The Colmap results and other datasets are not impacted.    
+This issue only affacts situations when Point-NeRF uses MVSNet on NeRF-Synthetic Dataset. The Colmap results and results on other datasets are not impacted.    
 An even more reasonable reconstruction approach should exclude using the knowledge of background color or other point filtering. Therefore, we suggest users to combine PointNeRF with more powerful MVS models, such as [TransMVS](https://github.com/megvii-research/TransMVSNet).
 
 
