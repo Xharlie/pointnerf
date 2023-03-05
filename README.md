@@ -288,8 +288,8 @@ Please download the COLMAP data (see above). If there is {maximum_step}.pth chec
   <summary>train scripts</summary>
 
 ```
-    bash dev_scripts/w_scannet_etf/scane101.sh
-    bash dev_scripts/w_scannet_etf/scane241.sh
+    bash dev_scripts/w_scannet_etf/scene101.sh
+    bash dev_scripts/w_scannet_etf/scene241.sh
 ```
 </details>
 
