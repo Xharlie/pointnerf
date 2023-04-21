@@ -307,7 +307,7 @@ class NeuralPoints(nn.Module):
                     zeros = torch.zeros(shape, device=device, dtype=torch.float32)
                     points_embeding = torch.normal(mean=zeros, std=std)
                 else:
-                    raise ValueError(init_method)
+                    raise ValueError(feature_init_method)
                 self.points_embeding = nn.Parameter(points_embeding)
                 print("points_embeding init:", points_embeding.shape, torch.max(self.points_embeding), torch.min(self.points_embeding))
                 self.points_conf=torch.ones_like(self.points_embeding[...,0:1])
