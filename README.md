@@ -76,7 +76,7 @@ We develope our code with pytorch1.8.1, pycuda2021.1, and torch_scatter 2.0.8
 
 ## Data Preparation
 
-The layout should looks like this, we provide all data folder here: [google_drive](https://drive.google.com/drive/folders/1kqbbdbbN1bQnwYglRe4iV8dKnyCvoOFS?usp=sharing)
+The layout should looks like this, we provide all data folder here: [google_drive](https://drive.google.com/drive/folders/1-Fn5g-NgHC0RcyWapHdfsqbSQksTgB4N?usp=sharing), except for scannet (We take it down on Mar 8th 2023, to respect Scannet's policy, please go to Scannet's official website for data.)
 ```
 pointnerf
 ├── data_src
