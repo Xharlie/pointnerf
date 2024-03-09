@@ -120,8 +120,8 @@ Download and extract ScanNet by following the instructions provided at http://ww
     ```
 * Download specific scenes (used by NSVF):
   ```
-   python data/download-scannet.py -o ../data_src/scannet/ id scene0101_04 
-   python data/download-scannet.py -o ../data_src/scannet/ id scene0241_01
+   python data/download-scannet.py -o ../data_src/scannet/ --id scene0101_04 
+   python data/download-scannet.py -o ../data_src/scannet/ --id scene0241_01
   ```
 * Process the sens files:
   ```
